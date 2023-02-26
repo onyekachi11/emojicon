@@ -4,23 +4,32 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: #a9c0a6;
+}
+
 header{
     text-align: center;
+    background-color: #097770;
 }
 
 header h1{
     text-transform: uppercase;
-    margin-top: 30px;
+    padding-top: 30px;
+    color: #e0cdbe;
 }
 
 header p{
     letter-spacing: 10px;
     margin-top: 20px;
+    color: #e0cdbe;
 }
 
 .input{
     display : flex;
     justify-content: center;
+    background-color: #097770;
+    border-radius: 0 0 5px 50px;
 }
 
 .input input{
@@ -28,14 +37,17 @@ header p{
     width: 80%;
     margin-top: 40px;
     margin-bottom: 40px;
+    border-radius: 5px;
     border: none;
-    border-bottom: 1px solid rgb(107, 102, 102);
     max-width: 900px;
+    background-color: #a9c0a6
+    ;
 }
 ul{
 max-width: 900px;
 margin: auto;
 padding: 20px;
+/* background-color: aqua; */
 }
 
 li{
@@ -47,21 +59,29 @@ li{
 }
 
 .emoji-input{
-    margin: 0 auto;
-    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 300px;
+    background-color:  rgb(255, 255, 255);
+    border-radius: 10px;
 }
 .emoji-input p{
-    /* border: 1px solid rgb(65, 63, 63); */
     border-radius: 4px;
-    
     margin: 0 50px 0 40px;
     padding: 10px;
     text-align: center;
-    font-size: 60px;
+    font-size: 40px;
     
 }
 .emoji-input p:last-child{
     font-size: 15px;
+}
+
+.emoji-section{
+    
 }
 
 

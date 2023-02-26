@@ -1,48 +1,41 @@
-import React from 'react';
-import Axios from 'axios'
-import { useState, useEffect } from 'react'
-import '../App.css'
+import React, { Component } from 'react'
 
-const Emojidata = ({input}) => {
-    const [emojidata, setEmojiData] = useState([]);
-     const [emojiInput, setEmojiInput] = useState()
-    
-    useEffect(()=>{
-        Axios.get('https://emoji-api.com/emojis?access_key=05702b9867aea46067348063326c299ec020f342')
-        .then((res)=>{
-          const responseData = res.data;
-          setEmojiData(responseData);
-        });
-      }, []);
+export default class Emojidata extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+        emojiData: [],
+        emojiInput : ''
+    }
+    }
 
-
-  return (
+    componentDidMount(){
+        fetch('https://emoji-api.com/emojis?access_key=05702b9867aea46067348063326c299ec020f342').then(resp=>resp.json()).then(resp=>this.setState({emojiData:resp}))
+    }
+    render() {
+    return (
     <div>
 
-      <div className='emoji-input'>
-        <p>{emojiInput}</p>
-        <p>Click Emoji to Display</p>
-      </div>
-      
-      <ul className='emoji-container' >
-      {emojidata.filter((val)=>{
-        if(input ===''){
-          return val
-        }else if(val.unicodeName.toLowerCase().includes(input.toLowerCase())||val.group.toLowerCase().includes(input.toLowerCase())){
-          return val
-        }
-      })
-      .map((emoji)=>{
-        const {character,unicodeName} = emoji
-        return(
-          <li key={unicodeName} onClick={()=>{
-            setEmojiInput(character)
-          }}> {character} </li>
-        )
-      })}
-      </ul>
-    </div>
-   )
+        <div className='emoji-input'>
+            <p>{this.state.emojiInput}</p>
+            <p>Click Emoji to Display</p>
+        </div>
+        <ul className='emoji-container' >
+            {this.state.emojiData.filter((val)=>{
+                if(this.props.input ===''){
+                    return val
+                }else if(val.unicodeName.toLowerCase().includes(this.props.input.toLowerCase())||val.group.toLowerCase().includes(this.props.input.toLowerCase())){
+                    return val
+            }
+            }).map((emoji)=>{
+                const {character,unicodeName} = emoji
+                    return(
+                <li key={unicodeName} onClick={()=>{
+                this.setState({emojiInput:character})
+                }}> {character} </li>
+                )
+                })}
+        </ul>
+    </div> )
+    }
 }
-
-export default Emojidata

@@ -4,12 +4,12 @@ import '../App.css'
 
 
 export default class Searchinput extends Component {
- constructor(){
+  constructor(){
   super()
-   this.state= {
+    this.state= {
     input: ''
   }
- }
+  }
   render() {
     return (
     <div>
@@ -17,9 +17,11 @@ export default class Searchinput extends Component {
         <input type="text" placeholder='Type here' onChange={(e)=>{
           this.setState({input: e.target.value})
         }} /> 
+    </div >
+    <div className='emoji-section'>
+      < Emojidata input={this.state.input}/>
     </div>
-       < Emojidata input={this.state.input}/>
-        </div>
+    </div>
   )
   }
 }
