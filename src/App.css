@@ -46,7 +46,7 @@ header p{
 ul{
 max-width: 900px;
 margin: auto;
-padding: 20px;
+padding: 20px 0 20px 10px;
 border-radius: 20px;
 background-color: #097770;
 }
